@@ -267,10 +267,10 @@ function App() {
           <button type="button" className="absolute top-0 right-0 m-6" onClick={() => setWinboxShow(false)}>
             <Icon icon="uil:multiply" className="w-5 h-5" />
           </button>
-          <h2 className="font-medium text-4xl mb-6">You win the game!</h2>
+          <h2 className="font-medium text-4xl mb-6">You win the game! 🎉</h2>
           <div className="flex items-center gap-2 w-full px-12">
             <button type="button" className="border-2 border-lime-500 text-lime-500 flex-1 py-4 text-xl font-semibold rounded-md">New game</button>
-            <button type="button" className="border-2 border-lime-500 bg-lime-500 flex-1 flex items-center gap-2 justify-center py-4 text-xl font-semibold rounded-md">
+            <button type="button" className="border-2 border-lime-500 bg-lime-500 text-white flex-1 flex items-center gap-2 justify-center py-4 text-xl font-semibold rounded-md">
               Share
               <Icon icon="mdi:share-variant" className="mt-0.5 w-6 h-6" />
             </button>
