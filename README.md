@@ -5,7 +5,7 @@
 ## The Problem
 
 - The official Wordle can only be played once per day 😕
-- The interface of the official Wordle doesn't look impressive enough
+- The interface of the official Wordle doesn't look impressive enough 🧐
 
 ## The Solution
 
