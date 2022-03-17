@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: Quicksand;
+    transition: background-color 0.3s;
+}
+
+
+.tutorial.in {
+    transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
+}
+
+.tutorial.out {
+    transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s, z-index 0s linear 0.5s;
+}
