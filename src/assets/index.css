@@ -11,7 +11,7 @@
 
 
 .tutorial.in {
-    transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
+    transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s, background-color 0.5s, color 0.5s;
 }
 
 .tutorial.out {

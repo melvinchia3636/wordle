@@ -8,12 +8,13 @@ import React from 'react';
 import Logo from './logo';
 
 function Navbar({
-  theme, setTheme, setShowTutorial, setShowSettings,
+  theme, setTheme, setShowTutorial, setShowSettings, highContrast,
 }: {
   theme: string;
   setTheme: (theme: string) => void;
   setShowTutorial: (showTutorial: boolean) => void;
   setShowSettings: (showSettings: boolean) => void;
+  highContrast: boolean;
 }) {
   return (
     <nav className="flex justify-between items-center">
@@ -39,7 +40,7 @@ function Navbar({
         </button>
         <button
           type="button"
-          className="bg-lime-500 p-3 rounded-md shadow-md text-zinc-100"
+          className={`${highContrast ? 'bg-sky-400' : 'bg-lime-500'} p-3 rounded-md shadow-md text-zinc-100`}
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         >
           <Icon

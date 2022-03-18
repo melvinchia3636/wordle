@@ -6,9 +6,10 @@
 import { Icon } from '@iconify/react';
 import React, { useEffect, useState } from 'react';
 
-function Tutorial({ showTutorial, setShowTutorial }: {
+function Tutorial({ showTutorial, setShowTutorial, highContrast }: {
   showTutorial: boolean;
   setShowTutorial: (showTutorial: boolean) => void;
+  highContrast: boolean;
 }) {
   const [changeColor, setChangeColor] = useState(false);
 
@@ -42,7 +43,7 @@ function Tutorial({ showTutorial, setShowTutorial }: {
       <span className="w-full border-b border-neutral-500 my-4" />
       <h3 className="font-medium text-2xl">Examples</h3>
       {([
-        ['WEARY', 0, 'bg-lime-500',
+        ['WEARY', 0, highContrast ? 'bg-sky-400' : 'bg-lime-500',
           <>
             The letter
             {' '}
@@ -50,7 +51,7 @@ function Tutorial({ showTutorial, setShowTutorial }: {
             {' '}
             is in the word and in the correct spot.
           </>],
-        ['PILLS', 1, 'bg-yellow-500',
+        ['PILLS', 1, highContrast ? 'bg-orange-400' : 'bg-yellow-500',
           <>
             The letter
             {' '}

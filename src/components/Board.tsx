@@ -9,7 +9,7 @@ function Board({
   isAnimating: boolean,
   isWrong: boolean,
   currentLine: number,
-  getBoardColor: (x: string, y: string[], iX: number, iY: number) => 'bg-lime-500' | 'bg-yellow-500' | 'bg-neutral-300 dark:bg-neutral-600' | '',
+  getBoardColor: (x: string, y: string[], iX: number, iY: number) => '' | 'bg-sky-400' | 'bg-lime-500' | 'bg-orange-400' | 'bg-neutral-300 dark:bg-neutral-600' | 'bg-yellow-500',
   isHardWrong: boolean,
 }) {
   return (
