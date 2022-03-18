@@ -11,7 +11,7 @@ import 'animate.css';
 import Navbar from './components/Navbar';
 import Board from './components/Board';
 import Keyboard from './components/Keyboard';
-import WinBox from './components/WinBox';
+import StatBox from './components/StatsBox';
 import Tutorial from './components/Tutorial';
 import Settings from './components/Settings';
 
@@ -56,7 +56,7 @@ function App() {
   const [currentLine, setCurrentLine] = useState(parseInt(localStorage.currentLine, 10) || 0);
   const [currentLetter, setCurrentLetter] = useState(parseInt(localStorage.currentLetter, 10) || 0);
 
-  const [isWin, setIsWin] = useState(localStorage.isWin === 'true');
+  const [isFinished, setIsFinished] = useState(localStorage.isFinished === 'true');
   const [isWrong, setWrong] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isHardWrong, setHardWrong] = useState(false);
@@ -64,6 +64,8 @@ function App() {
   const [showKeyboardStat, setShowKeyboardStat] = useState(false);
   const [showTutorial, setShowTutorial] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showStats, setShowStats] = useState(false);
+  const [winOrLose, setWinOrLose] = useState<'win'|'lose'|undefined>();
 
   const [hardMode, setHardMode] = useState(localStorage.hardMode === 'true');
   const [errorMessage, setErrorMessage] = useState('');
@@ -74,6 +76,7 @@ function App() {
     total: 0,
     streak: 0,
     maxStreak: 0,
+    guess: [0, 0, 0, 0, 0, 0],
   });
 
   useEffect(() => {
@@ -101,16 +104,22 @@ function App() {
   }, [currentLetter]);
 
   useEffect(() => {
-    localStorage.isWin = isWin;
-  }, [isWin]);
+    localStorage.isFinished = isFinished;
+  }, [isFinished]);
+
+  useEffect(() => {
+    localStorage.stats = JSON.stringify(stats);
+  }, [stats]);
 
   const updateBoard = (letter: string) => {
-    if (currentLetter <= 4 && !board[currentLine][currentLetter]) {
-      const newBoard = [...board];
-      newBoard[currentLine][currentLetter] = letter.toUpperCase();
-      setBoard(newBoard);
-      if (currentLetter + 1 <= 4) {
-        setCurrentLetter(currentLetter + 1);
+    if (!isAnimating) {
+      if (currentLetter <= 4 && !board[currentLine][currentLetter]) {
+        const newBoard = [...board];
+        newBoard[currentLine][currentLetter] = letter.toUpperCase();
+        setBoard(newBoard);
+        if (currentLetter + 1 <= 4) {
+          setCurrentLetter(currentLetter + 1);
+        }
       }
     }
   };
@@ -134,8 +143,32 @@ function App() {
       if (wordList.concat(allowedWordList).includes(board[currentLine].join('').toLowerCase())) {
         if (board[currentLine].join('') === targetWord) {
           setTimeout(() => {
-            setIsWin(true);
+            setWinOrLose('win');
+            setTimeout(() => {
+              setIsFinished(true);
+              setWinOrLose(undefined);
+              setStats(() => ({
+                correct: stats.correct + 1,
+                total: stats.total + 1,
+                streak: stats.streak + 1,
+                maxStreak: stats.streak + 1 > stats.maxStreak ? stats.streak + 1 : stats.maxStreak,
+                guess: stats.guess.map((e: number, i: number) => (i === currentLine ? e + 1 : e)),
+              }));
+            }, 2000);
           }, 2000);
+        } else if (currentLine === 5) {
+          setTimeout(() => {
+            setWinOrLose('lose');
+            setTimeout(() => {
+              setWinOrLose(undefined);
+              setIsFinished(true);
+            }, 2000);
+          }, 2000);
+          setStats(() => ({
+            ...stats,
+            total: stats.total + 1,
+            streak: 0,
+          }));
         }
         if (hardMode) {
           if (currentLine >= 1) {
@@ -208,9 +241,9 @@ function App() {
   };
 
   document.onkeydown = (e) => {
-    if (!showTutorial && !showSettings) {
+    if (!showTutorial && !showSettings && !showStats) {
       e.preventDefault();
-      if (!isWin) {
+      if (!isFinished) {
         if (e.key === 'Backspace') {
           onBackspace();
         } else if (e.key === 'Enter') {
@@ -234,10 +267,12 @@ function App() {
     );
     setCurrentLine(0);
     setCurrentLetter(0);
-    setIsWin(false);
+    setIsFinished(false);
     setIsAnimating(false);
     setShowKeyboardStat(true);
+    setShowStats(false);
     setWrong(false);
+    setWinOrLose(undefined);
     setTargetWord(
       wordList[
         Math.floor(
@@ -253,6 +288,7 @@ function App() {
         <Navbar
           theme={theme}
           setTheme={setTheme}
+          setShowStats={setShowStats}
           setShowTutorial={setShowTutorial}
           setShowSettings={setShowSettings}
           highContrast={highContrast}
@@ -266,7 +302,7 @@ function App() {
           getBoardColor={getBoardColor}
         />
         <Keyboard
-          isWin={isWin}
+          isFinished={isFinished}
           updateBoard={updateBoard}
           onEnter={onEnter}
           onBackspace={onBackspace}
@@ -293,12 +329,16 @@ function App() {
           setHighContrast={setHighContrast}
         />
       </div>
-      <WinBox
+      <StatBox
         board={board}
         getBoardColor={getBoardColor}
-        isWin={isWin}
+        isFinished={isFinished}
+        showStats={showStats}
+        setShowStats={setShowStats}
         newGame={newGame}
         highContrast={highContrast}
+        stats={stats}
+        currentLine={currentLine}
       />
       <div className={`p-4 px-8 bg-neutral-200 dark:bg-neutral-700 font-medium rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${isWrong ? 'translate-y-0' : '-translate-y-[150%]'}`}>
         <Icon icon="ph:warning" className="w-6 h-6 text-orange-400" />
@@ -309,6 +349,18 @@ function App() {
       >
         <Icon icon="ph:warning" className="w-6 h-6 text-orange-400" />
         {errorMessage}
+      </div>
+      <div className={`p-4 px-8 bg-neutral-2
+      00 dark:bg-neutral-700 font-semibold rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${winOrLose === 'win' ? 'translate-y-0' : '-translate-y-[150%]'}`}
+      >
+        <Icon icon="ph:smiley" className="w-6 h-6 text-lime-400" />
+        Amazing
+      </div>
+      <div className={`p-4 px-8 bg-neutral-2
+      00 dark:bg-neutral-700 font-semibold rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${winOrLose === 'lose' ? 'translate-y-0' : '-translate-y-[150%]'}`}
+      >
+        <Icon icon="ph:smiley-sad" className="w-6 h-6 text-rose-400" />
+        {targetWord}
       </div>
     </main>
   );

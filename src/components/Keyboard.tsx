@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import React from 'react';
 
 function Keyboard({
-  isWin,
+  isFinished,
   updateBoard,
   onEnter,
   onBackspace,
@@ -15,7 +15,7 @@ function Keyboard({
   board,
   highContrast,
 }: {
-  isWin: boolean;
+  isFinished: boolean;
   updateBoard: (letter: string) => void;
   onEnter: () => void;
   onBackspace: () => void;
@@ -59,7 +59,7 @@ function Keyboard({
           .map(
             (e) => (
               <button
-                disabled={isWin}
+                disabled={isFinished}
                 type="button"
                 onClick={() => updateBoard(e)}
                 className={`font-semibold w-12 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 h-16 rounded-md transition-all ${getKeyboardColor(
@@ -76,7 +76,7 @@ function Keyboard({
           .from('asdfghjkl')
           .map((e) => (
             <button
-              disabled={isWin}
+              disabled={isFinished}
               type="button"
               onClick={() => updateBoard(e)}
               className={`font-semibold w-12 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 h-16 rounded-md transition-all ${getKeyboardColor(
@@ -89,7 +89,7 @@ function Keyboard({
       </div>
       <div className="flex gap-2">
         <button
-          disabled={isWin}
+          disabled={isFinished}
           type="button"
           onClick={onEnter}
           className="w-24 flex items-center justify-center bg-neutral-300 shadow-lg dark:bg-neutral-600 h-16 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-500 transition-all"
@@ -103,7 +103,7 @@ function Keyboard({
           .from('zxcvbnm')
           .map((e) => (
             <button
-              disabled={isWin}
+              disabled={isFinished}
               type="button"
               onClick={() => updateBoard(e)}
               className={`font-semibold w-12 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 h-16 rounded-md transition-all ${getKeyboardColor(
@@ -114,7 +114,7 @@ function Keyboard({
             </button>
           ))}
         <button
-          disabled={isWin}
+          disabled={isFinished}
           type="button"
           onClick={onBackspace}
           className="w-24 flex items-center justify-center bg-neutral-300 shadow-lg dark:bg-neutral-600 h-16 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-500 transition-all"

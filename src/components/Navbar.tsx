@@ -8,13 +8,14 @@ import React from 'react';
 import Logo from './logo';
 
 function Navbar({
-  theme, setTheme, setShowTutorial, setShowSettings, highContrast,
+  theme, setTheme, setShowTutorial, setShowSettings, highContrast, setShowStats,
 }: {
   theme: string;
   setTheme: (theme: string) => void;
   setShowTutorial: (showTutorial: boolean) => void;
   setShowSettings: (showSettings: boolean) => void;
   highContrast: boolean;
+  setShowStats: (showStats: boolean) => void;
 }) {
   return (
     <nav className="flex justify-between items-center">
@@ -26,7 +27,7 @@ function Navbar({
             className="w-[1.45rem] h-[1.45rem] text-neutral-500"
           />
         </button>
-        <button type="button">
+        <button type="button" onClick={() => setShowStats(true)}>
           <Icon
             icon="uil:graph-bar"
             className="w-5 h-5 text-neutral-500"
