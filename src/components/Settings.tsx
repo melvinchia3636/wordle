@@ -47,7 +47,7 @@ function Settings({
                     }, 3000);
                   }
                 }}
-                className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-neutral-300 dark:bg-neutral-700 focus:outline-none checked:${highContrast ? 'bg-sky-400' : 'bg-lime-500'} cursor-pointer shadow-sm`}
+                className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-neutral-300 dark:bg-neutral-700 focus:outline-none ${highContrast ? 'checked:!bg-sky-400' : 'checked:!bg-lime-500'} cursor-pointer shadow-sm`}
                 type="checkbox"
                 role="switch"
                 id="flexSwitchCheckDefault"
@@ -59,7 +59,7 @@ function Settings({
           <h3 className="text-xl font-medium">Dark Theme</h3>
           <div>
             <div className="form-check form-switch">
-              <input checked={theme === 'dark'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-neutral-300 dark:bg-neutral-700 focus:outline-none checked:!${highContrast ? 'bg-sky-400' : 'bg-lime-500'} cursor-pointer shadow-sm`} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+              <input checked={theme === 'dark'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-neutral-300 dark:bg-neutral-700 focus:outline-none ${highContrast ? 'checked:!bg-sky-400' : 'checked:!bg-lime-500'} cursor-pointer shadow-sm`} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@ function Settings({
           </div>
           <div>
             <div className="form-check form-switch">
-              <input checked={highContrast} onClick={() => setHighContrast(!highContrast)} className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-neutral-300 dark:bg-neutral-700 focus:outline-none checked:${highContrast ? 'bg-sky-400' : 'bg-lime-500'} cursor-pointer shadow-sm`} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+              <input checked={highContrast} onClick={() => setHighContrast(!highContrast)} className={`form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-neutral-300 dark:bg-neutral-700 focus:outline-none ${highContrast ? 'checked:!bg-sky-400' : 'checked:!bg-lime-500'} cursor-pointer shadow-sm`} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
             </div>
           </div>
         </div>

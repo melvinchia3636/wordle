@@ -46,7 +46,7 @@ function Keyboard({
           result = Math.max(result, 0);
         }
       }
-      return ['', '!bg-neutral-400 dark:!bg-neutral-800', `!${highContrast ? 'bg-orange-400' : 'bg-yellow-500'}`, `!${highContrast ? 'bg-sky-400' : 'bg-lime-500'}`][result];
+      return ['', '!bg-neutral-400 dark:!bg-neutral-800', `${highContrast ? '!bg-orange-400' : '!bg-yellow-500'}`, `${highContrast ? '!bg-sky-400' : '!bg-lime-500'}`][result];
     }
     return '';
   };

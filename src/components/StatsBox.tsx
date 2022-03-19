@@ -111,7 +111,7 @@ function WinBox({
               <div className="flex items-center gap-2">
                 <span className="font-semibold w-4">{i + 1}</span>
                 <div
-                  className={`w-8 rounded-md p-1 px-3 ${isFinished && currentLine - 1 === i && stats.streak > 0 ? 'bg-lime-500' : 'bg-neutral-600'} font-semibold`}
+                  className={`w-8 rounded-md p-1 px-3 ${isFinished && currentLine - 1 === i && stats.streak > 0 ? 'bg-lime-500' : 'bg-neutral-200 dark:bg-neutral-600'} font-semibold`}
                   style={{
                     width: e ? `${(e / Math.max(...stats.guess)) * 100}%` : '2rem',
                   }}
