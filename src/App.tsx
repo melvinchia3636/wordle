@@ -284,7 +284,7 @@ function App() {
 
   return (
     <main className={`${theme} w-full h-screen overflow-hidden ${highContrast ? 'bg-sky-400' : 'bg-lime-500'} flex items-center justify-center`}>
-      <div className="w-full h-screen p-6 bg-zinc-100 relative dark:bg-neutral-800 text-neutral-600 dark:text-neutral-100 mx-48 shadow-[0_25px_50px_-12px_rgb(0,0,0,0.6)] flex flex-col">
+      <div className="w-full h-screen p-6 bg-zinc-100 relative dark:bg-neutral-800 text-neutral-600 dark:text-neutral-100 mx-4 sm:mx-12 lg:mx-48 shadow-[0_25px_50px_-12px_rgb(0,0,0,0.6)] flex flex-col">
         <Navbar
           theme={theme}
           setTheme={setTheme}
@@ -341,25 +341,21 @@ function App() {
         currentLine={currentLine}
       />
       <div className={`p-4 px-8 bg-neutral-200 dark:bg-neutral-700 font-medium rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${isWrong ? 'translate-y-0' : '-translate-y-[150%]'}`}>
-        <Icon icon="ph:warning" className="w-6 h-6 text-orange-400" />
+        <Icon icon="ph:warning" className="w-6 h-6 flex-shrink-0 text-orange-400" />
         Not in word list
       </div>
       <div className={`p-4 px-8 bg-neutral-2
       00 dark:bg-neutral-700 font-medium rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${isHardWrong ? 'translate-y-0' : '-translate-y-[150%]'}`}
       >
-        <Icon icon="ph:warning" className="w-6 h-6 text-orange-400" />
+        <Icon icon="ph:warning" className="w-6 h-6 flex-shrink-0 text-orange-400" />
         {errorMessage}
       </div>
-      <div className={`p-4 px-8 bg-neutral-2
-      00 dark:bg-neutral-700 font-semibold rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${winOrLose === 'win' ? 'translate-y-0' : '-translate-y-[150%]'}`}
-      >
-        <Icon icon="ph:smiley" className="w-6 h-6 text-lime-400" />
+      <div className={`p-4 px-8 bg-neutral-200 dark:bg-neutral-700 font-semibold rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex whitespace-nowrap items-center transition-transform duration-500 gap-2 ${winOrLose === 'win' ? 'translate-y-0' : '-translate-y-[150%]'}`}>
+        <Icon icon="ph:smiley" className="w-6 h-6 flex-shrink-0 text-lime-400" />
         Amazing
       </div>
-      <div className={`p-4 px-8 bg-neutral-2
-      00 dark:bg-neutral-700 font-semibold rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex items-center transition-transform duration-500 gap-2 ${winOrLose === 'lose' ? 'translate-y-0' : '-translate-y-[150%]'}`}
-      >
-        <Icon icon="ph:smiley-sad" className="w-6 h-6 text-rose-400" />
+      <div className={`p-4 px-8 bg-neutral-200 dark:bg-neutral-700 font-semibold rounded-md shadow-md text-neutral-600 dark:text-neutral-100 absolute z-10 top-6 left-1/2 -translate-x-1/2 flex whitespace-nowrap items-center transition-transform duration-500 gap-2 ${winOrLose === 'lose' ? 'translate-y-0' : '-translate-y-[150%]'}`}>
+        <Icon icon="ph:smiley-sad" className="w-6 h-6 flex-shrink-0 text-rose-400" />
         {targetWord}
       </div>
     </main>

@@ -20,7 +20,7 @@ function Navbar({
   return (
     <nav className="flex justify-between items-center">
       <Logo />
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 pl-8">
         <button type="button" onClick={() => setShowTutorial(true)}>
           <Icon
             icon="uil:question-circle"

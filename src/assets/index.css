@@ -17,3 +17,11 @@
 .tutorial.out {
     transition: opacity 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s, z-index 0s linear 0.5s;
 }
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}

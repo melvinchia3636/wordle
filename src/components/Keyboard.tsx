@@ -52,8 +52,8 @@ function Keyboard({
   };
 
   return (
-    <div className="flex flex-col items-center gap-2 text-lg">
-      <div className="flex gap-2">
+    <div className="flex flex-col items-center gap-1 510:gap-2 text-lg">
+      <div className="flex gap-1 510:gap-2">
         {Array
           .from('qwertyuiop')
           .map(
@@ -62,7 +62,7 @@ function Keyboard({
                 disabled={isFinished}
                 type="button"
                 onClick={() => updateBoard(e)}
-                className={`font-semibold w-12 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 h-16 rounded-md transition-all ${getKeyboardColor(
+                className={`font-semibold text-sm 510:text-base w-[2.2rem] h-12 510:w-9 510:h-12 md:w-12 md:h-16 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 rounded-md transition-all ${getKeyboardColor(
                   e.toUpperCase(),
                 )}`}
               >
@@ -71,7 +71,7 @@ function Keyboard({
             ),
           )}
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-1 510:gap-2">
         {Array
           .from('asdfghjkl')
           .map((e) => (
@@ -79,7 +79,7 @@ function Keyboard({
               disabled={isFinished}
               type="button"
               onClick={() => updateBoard(e)}
-              className={`font-semibold w-12 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 h-16 rounded-md transition-all ${getKeyboardColor(
+              className={`font-semibold text-sm 510:text-base w-[2.2rem] h-12 510:w-9 510:h-12 md:w-12 md:h-16 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 rounded-md transition-all ${getKeyboardColor(
                 e.toUpperCase(),
               )}`}
             >
@@ -87,12 +87,12 @@ function Keyboard({
             </button>
           ))}
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-1 510:gap-2">
         <button
           disabled={isFinished}
           type="button"
           onClick={onEnter}
-          className="w-24 flex items-center justify-center bg-neutral-300 shadow-lg dark:bg-neutral-600 h-16 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-500 transition-all"
+          className="text-sm 510:text-base w-12 h-12 510:w-6 510:h-12 md:w-12 md:h-16 flex items-center justify-center bg-neutral-300 shadow-lg dark:bg-neutral-600 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-500 transition-all"
         >
           <Icon
             icon="uil:enter"
@@ -106,7 +106,7 @@ function Keyboard({
               disabled={isFinished}
               type="button"
               onClick={() => updateBoard(e)}
-              className={`font-semibold w-12 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 h-16 rounded-md transition-all ${getKeyboardColor(
+              className={`font-semibold text-sm 510:text-base w-[2.2rem] h-12 510:w-9 510:h-12 md:w-12 md:h-16 bg-neutral-300 dark:bg-neutral-600 shadow-lg hover:bg-neutral-400 dark:hover:bg-neutral-500 rounded-md transition-all ${getKeyboardColor(
                 e.toUpperCase(),
               )}`}
             >
@@ -117,11 +117,11 @@ function Keyboard({
           disabled={isFinished}
           type="button"
           onClick={onBackspace}
-          className="w-24 flex items-center justify-center bg-neutral-300 shadow-lg dark:bg-neutral-600 h-16 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-500 transition-all"
+          className="w-12 h-12 510:w-9 510:h-12 md:w-12 md:h-16 flex items-center justify-center bg-neutral-300 shadow-lg dark:bg-neutral-600 rounded-md hover:bg-neutral-400 dark:hover:bg-neutral-500 transition-all"
         >
           <Icon
             icon="uil:backspace"
-            className="w-6 h-6 -ml-1"
+            className="w-5 h-5 510:w-6 510:h-6 -ml-1"
           />
         </button>
       </div>
