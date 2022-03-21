@@ -155,7 +155,7 @@ function App() {
                 guess: stats.guess.map((e: number, i: number) => (i === currentLine ? e + 1 : e)),
               }));
             }, 2000);
-          }, 2000);
+          }, 1000);
         } else if (currentLine === 5) {
           setTimeout(() => {
             setWinOrLose('lose');
@@ -163,7 +163,7 @@ function App() {
               setWinOrLose(undefined);
               setIsFinished(true);
             }, 2000);
-          }, 2000);
+          }, 1500);
           setStats(() => ({
             ...stats,
             total: stats.total + 1,
@@ -205,7 +205,7 @@ function App() {
           setTimeout(() => {
             setShowKeyboardStat(true);
           }, 200);
-        }, 2100);
+        }, 1100);
       } else if (isWrong === false) {
         setWrong(true);
         setTimeout(() => {

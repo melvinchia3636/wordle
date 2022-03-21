@@ -19,7 +19,7 @@ function Board({
           <div className="flex gap-2">
             {y.map((x, iX) => (
               <div
-                className={`w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-xl md:text-2xl font-semibold rounded-md border-2 border-neutral-300 dark:border-neutral-600 transition-all duration-500 ${isAnimating && `delay-[${iX / 2}s]`} ${(isWrong || isHardWrong) && iY === currentLine && 'animate__animated animate__shakeX animate__faster'} ${getBoardColor(x, y, iX, iY)
+                className={`w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-xl md:text-2xl font-semibold rounded-md border-2 border-neutral-300 dark:border-neutral-600 transition-all duration-500 ${isAnimating && `delay-[${iX / 4}s]`} ${(isWrong || isHardWrong) && iY === currentLine && 'animate__animated animate__shakeX animate__faster'} ${getBoardColor(x, y, iX, iY)
                 }`}
               >
                 {x}
